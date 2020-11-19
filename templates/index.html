@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-10 col-xs-11 col-sm-11 col-md-10 col-lg-10 col-xl-10">
+            <img class=" h-100 " style="width:121%;" src="{% static 'img/huawei_mediapad_t3_7-1.jpg' %}" alt="main_banner" />
+
+    </div>
+</div>
+<section class="my-5">
+    <div class="container">
+        <div class="row">
+                            {% for product in products %}
+
+            <div class="col-12 col-xs-12 col-sm-10 col-md-6 col-lg-4 col-xl-3">
+
+                <div class="border-dark card mx-3 my-3 " style="width:250px; ">
+                    <a href="{{ product.get_url}}">
+                        <img class="card-img-top mx-4 my-3" src="{{ product.image_url }}" style="width:210px;height:260px;" alt="Card image cap"/></a>
+                    <div class="card-body">
+                      <h5 class="card-title font-weight-italic"><a href="{{ product.get_url}}"> {{ product.name}}</a></h5>
+                      <p class="card-text text-sm text-truncate">{{ product.description }}</p>
+                        <div class="row">
+                            <div  class="small col-12 col-xs-12 col-sm-10 col-md-6 col-lg-12 col-xl-12">
+                                <p>price:{{product.price}}$</p><p>stock:{{product.stock}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">{{product.created }}</small>
+                    </div>
+                </div>
+
+            </div>
+                                {% endfor %}
+
+        </div>
+    </div>
+</section>
+</div>
+{% endblock %}
